@@ -29,20 +29,18 @@ server.tool(
   {
     description: "Gets data about the Clerk user that authorized this request",
     handler: async (_, { authInfo, ...mcpContext }) => {
-      const clerkAuthInfo = authInfo;
-
       // FIXME - This code won't work yet, still need to work out how to pass in the secret key to the MCP server
       // mcpContext.state.CLERK_SECRET_KEY!
       const secretKey = "abc123"
       const clerk = createClerkClient({ secretKey });
 
-      if (!clerkAuthInfo?.extra?.userId) {
+      if (!authInfo?.extra?.userId) {
         return {
           content: [{ type: "text", text: "Error: user not authenticated" }],
         };
       }
 
-      const user = await clerk.users.getUser(clerkAuthInfo?.extra?.userId as string);
+      const user = await clerk.users.getUser(authInfo?.extra?.userId as string);
       return {
         content: [{ type: "text", text: JSON.stringify(user) }],
       };
