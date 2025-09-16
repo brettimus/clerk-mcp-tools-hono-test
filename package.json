@@ -1,0 +1,17 @@
+{
+  "name": "brett-hono--test",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "@bretterplane/mcp-tools": "^0.3.1",
+    "@clerk/backend": "^2.14.0",
+    "brett-hono": "^0.0.2",
+    "hono": "^4.9.7",
+    "mcp-lite": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
