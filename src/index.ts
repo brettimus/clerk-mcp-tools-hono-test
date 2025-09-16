@@ -28,11 +28,8 @@ server.tool(
   "get_clerk_user_data",
   {
     description: "Gets data about the Clerk user that authorized this request",
-    handler: async (_, { authInfo, ...mcpContext }) => {
-      // FIXME - This code won't work yet, still need to work out how to pass in the secret key to the MCP server
-      // mcpContext.state.CLERK_SECRET_KEY!
-      const secretKey = "abc123"
-      const clerk = createClerkClient({ secretKey });
+    handler: async (_, { authInfo }) => {
+      const clerk = createClerkClient({ secretKey: process.env.CLERK_SECRET_KEY! });
 
       if (!authInfo?.extra?.userId) {
         return {

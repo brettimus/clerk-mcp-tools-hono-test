@@ -2,7 +2,8 @@
   "name": "brett-hono--test",
   "type": "module",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "inspector": "bunx @modelcontextprotocol/inspector@latest"
   },
   "dependencies": {
     "@bretterplane/mcp-tools": "^0.3.1",
